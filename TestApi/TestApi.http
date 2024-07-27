@@ -1,0 +1,29 @@
+@TestApi_HostAddress = http://localhost:5151
+
+GET {{TestApi_HostAddress}}/weatherforecasts/
+Accept: application/json
+
+###
+
+GET {{TestApi_HostAddress}}/books/
+Accept: application/json
+
+###
+
+POST {{TestApi_HostAddress}}/books/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "title": "Lolita",
+  "author": "Vladimir Nabokov"
+}
+
+> {% client.global.set("id", response.body.id) %}
+
+###
+
+DELETE {{TestApi_HostAddress}}/books/{{id}}
+Accept: application/json
+
+> {% client.global.clear("id") %}
