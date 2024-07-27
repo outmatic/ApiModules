@@ -6,29 +6,9 @@ using TestApi.Data;
 
 namespace TestApi.Api.Books;
 
-public class DeleteBook(BookList books) : IApiCommand<DeleteBook.Request>
+public class DeleteBook(BookList books) : IApiCommand<DeleteBookRequest>
 {
-    public record Request : IApiRequest
-    {
-        [FromRoute]
-        public required string Id { get; init; }
-
-        public record RequestBody(string Title, string Author);
-
-        public class Validator : AbstractValidator<Request>
-        {
-            public Validator()
-            {
-                RuleFor(x => x.Id)
-                    .Must(x => Guid.TryParse(x, out _))
-                    .WithMessage("Invalid Guid");
-            }
-        }
-    }
-
-    public record Response(Guid Id);
-
-    public async Task<IResult> Handle(Request request, CancellationToken cancellationToken)
+    public async Task<IResult> Handle(DeleteBookRequest request, CancellationToken cancellationToken)
     {
         var deleted = books.Delete(Guid.Parse(request.Id));
 
@@ -39,3 +19,23 @@ public class DeleteBook(BookList books) : IApiCommand<DeleteBook.Request>
         };
     }
 }
+
+public record DeleteBookRequest : IApiRequest
+{
+    [FromRoute]
+    public required string Id { get; init; }
+
+    public record RequestBody(string Title, string Author);
+
+    public class Validator : AbstractValidator<DeleteBookRequest>
+    {
+        public Validator()
+        {
+            RuleFor(x => x.Id)
+                .Must(x => Guid.TryParse(x, out _))
+                .WithMessage("Invalid Guid");
+        }
+    }
+}
+
+public record DeleteBookResponse(Guid Id);

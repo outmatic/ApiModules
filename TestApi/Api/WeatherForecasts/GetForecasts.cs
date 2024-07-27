@@ -2,13 +2,9 @@ using ApiModules.Abstractions;
 
 namespace TestApi.Api.WeatherForecasts;
 
-public class GetForecasts : IApiCommand<GetForecasts.Request>
+public class GetForecasts : IApiCommand<GetForecastsRequest>
 {
-    public record Request : IApiRequest;
-   
-    public record Response(string Message);
-
-    public async Task<IResult> Handle(Request request, CancellationToken cancellationToken)
+    public async Task<IResult> Handle(GetForecastsRequest request, CancellationToken cancellationToken)
     {
         var summaries = new[]
         {
@@ -24,6 +20,10 @@ public class GetForecasts : IApiCommand<GetForecasts.Request>
                 ))
             .ToArray();
         
-        return TypedResults.Ok(forecasts);
+        return TypedResults.Ok(new GetForecastsResponse(forecasts));
     }
 }
+
+public record GetForecastsResponse(WeatherForecast[] Forecasts);
+
+public record GetForecastsRequest : IApiRequest;

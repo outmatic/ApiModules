@@ -10,14 +10,14 @@ public class ApiModule : BaseApiModule
         var group = endpointRouteBuilder.MapGroup("/books")
             .WithTags("Books");
 
-        group.MapGetCommand<GetBooks.Request>("/")
-            .Produces<GetBooks.Response>();
+        group.MapGetCommand<GetBooksRequest>("/")
+            .Produces<GetBooksResponse>();
 
-        group.MapPostCommand<AddBook.Request>("/")
-            .Produces<AddBook.Response>();
+        group.MapPostCommand<AddBookRequest>("/")
+            .Produces<AddBookResponse>();
         
-        group.MapDeleteCommand<DeleteBook.Request>("/{id}")
-            .Produces<DeleteBook.Response>();
+        group.MapDeleteCommand<DeleteBookRequest>("/{id}")
+            .Produces<DeleteBookResponse>();
 
         return group;
     }

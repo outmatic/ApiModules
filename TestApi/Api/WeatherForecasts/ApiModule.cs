@@ -10,8 +10,8 @@ public class ApiModule : BaseApiModule
         var group = endpointRouteBuilder.MapGroup("/weatherforecasts")
             .WithTags("WeatherForecasts");
 
-        group.MapGetCommand<GetForecasts.Request>("/")
-            .Produces<GetForecasts.Response>();
+        group.MapGetCommand<GetForecastsRequest>("/")
+            .Produces<GetForecastsResponse>();
 
         return group;
     }
