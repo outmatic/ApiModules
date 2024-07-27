@@ -14,4 +14,8 @@
       <Folder Include="Api\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.6.2" />
+    </ItemGroup>
+
 </Project>
