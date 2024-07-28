@@ -7,7 +7,7 @@ public class ApiModule : BaseApiModule
 {
     public override IEndpointRouteBuilder MapApiModule(IEndpointRouteBuilder endpointRouteBuilder)
     {
-        var group = endpointRouteBuilder.MapGroup("/weatherforecasts")
+        var group = endpointRouteBuilder.MapGroup("/weatherforecasts/{city}")
             .WithTags("WeatherForecasts");
 
         group.MapGetCommand<GetForecastsRequest>("/")
