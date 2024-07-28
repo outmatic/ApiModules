@@ -8,6 +8,12 @@
         <IsPackable>true</IsPackable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Authors>OUTMATIC P.S.A.</Authors>
+        <Version>1.0.0-beta</Version>
+        <Title>.NET ApiModules</Title>
+        <Description>A library on top of .NET Minimal APIs, with support for Mediatr, FluentValidation and automatic database transactions</Description>
+        <PackageProjectUrl>https://github.com/outmatic/ApiModules</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/outmatic/ApiModules</RepositoryUrl>
+        <PackageTags>minimalapi endpoints</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>

@@ -1,4 +1,5 @@
 using ApiModules.Abstractions;
+using Microsoft.AspNetCore.Mvc;
 
 namespace TestApi.Api.WeatherForecasts;
 
@@ -26,4 +27,4 @@ public class GetForecasts : IApiCommand<GetForecastsRequest>
 
 public record GetForecastsResponse(WeatherForecast[] Forecasts);
 
-public record GetForecastsRequest : IApiRequest;
+public record GetForecastsRequest([FromRoute] string City) : IApiRequest;
